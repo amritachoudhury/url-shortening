@@ -1,0 +1,50 @@
+.container {
+    width: 50%;
+}
+.header-class {
+    font-size: 40px;
+    font-weight: bolder;
+    font-style: italic;
+    font-family: sans-serif;
+    color: rgb(35, 2, 66);
+}
+.description {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: cursive;
+}
+.detail {
+    font-size: 15px;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+.link-input {
+    padding: 8px;
+    vertical-align: center;
+    color: black;
+    background-color: rgb(236, 232, 231);
+    border-radius: 5px;
+}
+.link-form-field {
+    width: 480px;
+}
+.link-button {
+    margin-left: 20px;
+}
+.button-style {
+    height: 30px;
+    background-color: rgb(0, 255, 115);
+    border-color: blanchedalmond;
+}
+.div-vertical-spacing {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.div-side-spacing {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.form-style {
+    color: rgb(32, 2, 71);
+    background-color: rgb(32, 2, 71);
+}

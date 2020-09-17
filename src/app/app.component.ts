@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'url-shortening';
+export class AppComponent implements OnInit {
+  public show: boolean = false;
+
+  constructor() {}
+
+  public ngOnInit(): void {}
+
+    public getStarted(){
+      this.show = true;
+    }
 }
