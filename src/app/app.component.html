@@ -9,13 +9,16 @@
       <button class="button-style" (click)="getStarted()">Get Started</button>
     </div>
     <div class="div-vertical-spacing">
-      <div *ngIf="show" class="div-vertical-spacing div-side-spacing form-style" fxLayout="row" fxLayoutAlign="space-around center">
-        <mat-form-field class="link-form-field" appearance="outline">
-          <input matInput class="link-input" placeholder="Shorten a link here...">
+      <div *ngIf="show" class="div-vertical-spacing div-side-spacing form-style" fxLayout="row"
+        fxLayoutAlign="space-around center">
+        <mat-form-field class="link-form-field" classs="form-field" appearance="outline">
+          <input matInput class="link-input" [formControl]="linkInput" placeholder="Shorten a link here...">
+          <mat-hint class="hint">Enter a valid link</mat-hint>
+          <mat-error *ngIf="linkInput.invalid" class="error">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        <button class="link-button button-style" mat-stroked-button>Shorten It</button>
+        <button class="link-button button-style" (click)="shortenIt()" mat-stroked-button>Shorten It</button>
       </div>
     </div>
-    
+    {{opText}}
   </div>
 </div>
