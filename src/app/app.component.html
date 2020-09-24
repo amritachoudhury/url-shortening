@@ -1,24 +1,51 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
   <div class="container">
-    <div class="header-class div-vertical-spacing ">Shorti-fy</div>
-    <div class="description div-vertical-spacing ">
+    <div class="header-class div-vertical-spacing">Shorti-fy</div>
+    <div class="description div-vertical-spacing">
       <div class="description">It's more than just shorter links..</div>
-      <div class="detail">Build and Promote your brand by sharing your brand's shortened link on Social Media</div>
+      <div class="detail">
+        Build and Promote your brand by sharing your brand's shortened link on
+        Social Media
+      </div>
     </div>
-    <div class="div-vertical-spacing " fxLayoutAlign="space-around center">
+    <div class="div-vertical-spacing" fxLayoutAlign="space-around center">
       <button class="button-style" (click)="getStarted()">Get Started</button>
     </div>
     <div class="div-vertical-spacing">
       <div *ngIf="show" class="div-vertical-spacing div-side-spacing form-style" fxLayout="row"
         fxLayoutAlign="space-around center">
         <mat-form-field class="link-form-field" classs="form-field" appearance="outline">
-          <input matInput class="link-input" [formControl]="linkInput" placeholder="Shorten a link here...">
-          <mat-hint class="hint">Enter a valid link</mat-hint>
-          <mat-error *ngIf="linkInput.invalid" class="error">{{getErrorMessage()}}</mat-error>
+          <input matInput (input)="getErrorMessage()" class="link-input" [formControl]="inputLink" placeholder="Shorten a link here..." />
+          <!-- <mat-hint class="hint">URL</mat-hint> -->
+          <mat-error *ngIf="inputLink.hasError('required')" class="error">
+            Field cannot be empty. 
+          </mat-error>
+          <div *ngIf="errorMessage" class="error">
+            {{errorMessage}}
+          </div>
         </mat-form-field>
-        <button class="link-button button-style" (click)="shortenIt()" mat-stroked-button>Shorten It</button>
+        <button class="link-button button-style" 
+        [disabled]="inputLink.hasError('required')"
+        (click)="shortenIt()" mat-stroked-button>
+          Shorten It
+        </button>
       </div>
     </div>
-    {{opText}}
+    <div *ngFor="let item of outputView; index as i">
+      <mat-card>
+        <mat-card-header class="card-style">
+          <div fxLayout="row" class="parent-div" fxLayoutAlign="space-around center">
+            <div class="old-link-div">{{ item.link }}</div>
+            <div class="new-link-div">
+              <input matInput readonly class="dummy-input" (click)="navigate(item.shortenedLink)"
+                value="{{ item.shortenedLink }}" #copyToClipboard />
+            </div>
+            <div class="copy-button-div">
+              <button class="copy-button" [ngxClipboard]="copyToClipboard">Copy</button>
+            </div>
+          </div>
+        </mat-card-header>
+      </mat-card>
+    </div>
   </div>
 </div>
